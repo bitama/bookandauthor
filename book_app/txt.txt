@@ -1,0 +1,67 @@
+
+>>> from book_app.models import *
+>>> csharp=Book.objects.create(title="C SHARP")
+>>> java=Book.objects.create(title="JAVA")
+>>> python=Book.objects.create(title="PYTHON")
+>>> php=Book.objects.create(title="PHP")
+>>> ruby=Book.objects.create(title="RUBY")
+>>> jane_austen=Author.objects.create(first_name="Jane", last_name="Austen")
+>>> emily_dickson=Author.objects.create(first_name="Emily", last_name="Dickson")
+>>> fyodor_dostoevsky=Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+>>> william_shakespare=Author.objects.create(first_name="William", last_name="Shakespare")
+>>> lau_Tzu=Author.objects.create(first_name="Lau", last_name="Tzu")
+>>> Book.objects.all()
+<QuerySet [<Book: C SHARP>, <Book: JAVA>, <Book: PYTHON>, <Book: PHP>, <Book: RUBY>]>
+>>> Author.objects.all()
+<QuerySet [<Author: Jane Austen>, <Author: Emily Dickson>, <Author: Fyodor Dostoevsky>, <Author: William Shakespare>, <Author: Lau Tzu>]>
+>>> x=Book.objects.get(id=1)
+>>> x
+<Book: C SHARP>
+>>> x="C#"
+>>> s.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 's' is not defined
+>>> x="C#"
+>>> x.title="C#"
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'str' object attribute 'title' is read-only
+>>> x=Book.objects.get(id=1)
+>>> x
+<Book: C SHARP>
+>>> x.title="C#"
+>>> x.save()
+>>> Book.objects.all()
+<QuerySet [<Book: C#>, <Book: JAVA>, <Book: PYTHON>, <Book: PHP>, <Book: RUBY>]>
+>>> Author.objects.all()
+<QuerySet [<Author: Jane Austen>, <Author: Emily Dickson>, <Author: Fyodor Dostoevsky>, <Author: William Shakespare>, <Author: Lau Tzu>]>
+>>> y=Author.objects.get(id=4)
+>>> y.first_name="Bill"
+>>> y.save()
+>>> y
+<Author: Bill Shakespare>
+>>> k=Author.objects.get(id=1)
+>>> k
+<Author: Jane Austen>
+>>> k.books.add(x)
+>>> k
+<Author: Jane Austen>
+>>> k.save()
+>>> k
+<Author: Jane Austen>
+>>> k.books
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x0000020F477E0D30>
+>>> k.books.title
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ManyRelatedManager' object has no attribute 'title'
+>>> k.books.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ManyRelatedManager' object has no attribute 'first_name'
+>>> k.delete()
+(2, {'book_app.Author_books': 1, 'book_app.Author': 1})
+>>> Book.objects.all()
+<QuerySet [<Book: C#>, <Book: JAVA>, <Book: PYTHON>, <Book: PHP>, <Book: RUBY>]>
+>>>
